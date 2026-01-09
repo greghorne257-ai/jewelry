@@ -14,6 +14,33 @@
   <a href="https://paypal.me/g3333333/120" target="_blank" class="buy-button">Buy Now - $120.00</a>
   <p><small>Contact me at greghorne257@gmail.com.</small></p>
   
+  <div class="controls">
+  <label for="type-select">Type:</label>
+  <select id="type-select">
+    <option value="plain">Plain</option>
+    <option value="corrugated">Corrugated</option>
+    <option value="crystal">Crystal (Birthstone)</option>
+  </select>
+
+  <!-- Month selector - hidden until Crystal is chosen -->
+  <div id="month-group" style="display:none;">
+    <label for="month-select">Month:</label>
+    <select id="month-select">
+      <option value="jan">January</option>
+      <option value="feb">February</option>
+      <option value="mar">March</option>
+      <option value="apr">April</option>
+      <option value="may">May</option>
+      <option value="jun">June</option>
+      <option value="jul">July</option>
+      <option value="aug">August</option>
+      <option value="sep">September</option>
+      <option value="oct">October</option>
+      <option value="nov">November</option>
+      <option value="dec">December</option>
+    </select>
+  </div>
+</div>
 
 <!-- Main display image (starts with plain version) -->
 <img id="main-image" src="images/226.jpg" alt="Handmade 5-wire twisted gold filled bracelet" class="main-img">
@@ -36,9 +63,10 @@
   <img src="images/226dec.jpg" alt="December birthstone version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
 </div>
   
-  
-  <!-- Add the rest: feb through dec -->
 </div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
 

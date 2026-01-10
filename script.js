@@ -1,6 +1,12 @@
 // script.js - FINAL version: Size always visible, Month only for crystal, Price updates correctly
-
-console.log("Script loaded successfully");
+// const typeSelect
+// const monthGroup
+// const sizeGroup
+// const mainImage
+// const priceDisplay
+// const prices plain, corrugated, crystal
+// function updateDisplay()
+// Events Listener #1
 
 // Elements
 const typeSelect = document.getElementById('type-select');
@@ -63,7 +69,7 @@ function updateDisplay() {
   }
 }
 
-// Events
+// Events Listener #1
 typeSelect.addEventListener('change', updateDisplay);
 document.getElementById('month-select').addEventListener('change', updateDisplay);
 document.getElementById('size-select').addEventListener('change', updateDisplay);

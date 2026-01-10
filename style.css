@@ -95,3 +95,26 @@ img {
     gap: 25px;             /* Slightly more on small screens */
   }
 }
+
+/* Thumbnail formatting */
+.thumbnail-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.thumb:hover {
+  border-color: #0070ba;
+}

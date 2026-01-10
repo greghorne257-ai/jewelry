@@ -68,3 +68,30 @@ img {
     border-color: #0070ba;
 }
 
+
+
+/* Space top 3 fields. */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;               /* Space between all form groups */
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;                /* Space between label and input */
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+/* Optional: Extra spacing on mobile */
+@media (max-width: 600px) {
+  .controls {
+    gap: 25px;             /* Slightly more on small screens */
+  }
+}

@@ -7,13 +7,8 @@
   <title>Handmade Gold Filled Bracelet - Model 226</title>
 </head>
 <body>
-  <h1>Handmade Gold Filled Bracelet</h1>
-  <img src="images/226.jpg" alt="Handmade gold filled bracelet model 226">
-  <p>A unique, handcrafted 7 1/4" bracelet perfect for any occasion.</p>
-  <p class="price">$120.00</p>
-  <a href="https://paypal.me/g3333333/120" target="_blank" class="buy-button">Buy Now - $120.00</a>
-  <p><small>Contact me at greghorne257@gmail.com.</small></p>
-  
+  <h1>Handmade Gold Filled Bracelets</h1>
+
   <div class="controls">
   <label for="type-select">Type:</label>
   <select id="type-select">
@@ -24,6 +19,34 @@
 
   <!-- Month selector - hidden until Crystal is chosen -->
   <div id="month-group" style="display:none;">
+  
+  <div id="size-group">
+  <label for="size-select">Size (inches):</label>
+  <select id="size-select">
+    <option value="5.00">5"</option>
+    <option value="5.25">5 1/4"</option>
+    <option value="5.50">5 1/2"</option>
+    <option value="5.75">5 3/4"</option>
+    <option value="6.00">6"</option>
+    <option value="6.25">6 1/4"</option>
+    <option value="6.50">6 1/2"</option>
+    <option value="6.75">6 3/4"</option>
+    <option value="7.00">7"</option>
+    <option value="7.25">7 1/4"</option>
+    <option value="7.50">7 1/2"</option>
+    <option value="7.75">7 3/4"</option>
+    <option value="8.00">8"</option>
+    <option value="8.25">8 1/4"</option>
+    <option value="8.50">8 1/2"</option>
+    <option value="8.75">8 3/4"</option>
+    <option value="9.00">9"</option>
+  </select>
+</div>
+
+<!-- Price display (starts hidden or with default) -->
+
+<p id="price-display" class="price">Select a type and size to see price</p>
+  
     <label for="month-select">Month:</label>
     <select id="month-select">
       <option value="jan">January</option>
@@ -67,6 +90,7 @@
 
 <script src="script.js"></script>
 
+ <p><small>Contact me at greghorne257@gmail.com.</small></p>
 </body>
 </html>
 

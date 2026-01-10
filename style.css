@@ -67,3 +67,11 @@ img {
 .thumb:hover {
     border-color: #0070ba;
 }
+
+.controls, #size-group, #price-display {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 50px; /* force visibility */
+  border: 1px solid red; /* temporary red border to spot it */
+}

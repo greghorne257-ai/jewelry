@@ -1,5 +1,7 @@
 // script.js
 
+console.log("Script loaded! Size select exists:", !!document.getElementById('size-select'));
+
 const typeSelect = document.getElementById('type-select');
 const monthSelect = document.getElementById('month-select');
 const monthGroup = document.getElementById('month-group');

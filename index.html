@@ -3,100 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
   <title>Handmade Gold Filled Bracelet - Model 226</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Handmade Gold Filled Bracelets</h1>
+  <h1>Handmade Gold Filled Bracelets - Model 226</h1>
 
   <div class="controls">
-  <label for="type-select">Type:</label>
-  <select id="type-select">
-    <option value="plain">Plain</option>
-    <option value="corrugated">Corrugated</option>
-    <option value="crystal">Crystal (Birthstone)</option>
-  </select>
+    <div class="form-group">
+      <label for="type-select">Type:</label>
+      <select id="type-select">
+        <option value="plain" selected>Plain (default)</option>
+        <option value="corrugated">Corrugated</option>
+        <option value="crystal">Crystal (Birthstone)</option>
+      </select>
+    </div>
 
-  <!-- Month selector - hidden until Crystal is chosen -->
-  <div id="month-group" style="display:none;">
-  
-  <div id="size-group">
-  
-  <div id="amount-group">
-  <label for="quantity">Quantity:</label>
-  <input type="number" id="quantity" min="1" value="1" style="width: 80px; margin-left: 10px;">
-</div>
+    <!-- Month selector - hidden unless Crystal is selected -->
+    <div id="month-group" class="form-group" style="display: none;">
+      <label for="month-select">Month (Birthstone):</label>
+      <select id="month-select">
+        <option value="jan">January</option>
+        <option value="feb">February</option>
+        <option value="mar">March</option>
+        <option value="apr">April</option>
+        <option value="may">May</option>
+        <option value="jun">June</option>
+        <option value="jul">July</option>
+        <option value="aug">August</option>
+        <option value="sep">September</option>
+        <option value="oct">October</option>
+        <option value="nov">November</option>
+        <option value="dec">December</option>
+      </select>
+    </div>
 
-  <label for="size-select">Size (inches):</label>
-  <select id="size-select">
-    <option value="5.00">5"</option>
-    <option value="5.25">5 1/4"</option>
-    <option value="5.50">5 1/2"</option>
-    <option value="5.75">5 3/4"</option>
-    <option value="6.00">6"</option>
-    <option value="6.25">6 1/4"</option>
-    <option value="6.50">6 1/2"</option>
-    <option value="6.75">6 3/4"</option>
-    <option value="7.00">7"</option>
-    <option value="7.25">7 1/4"</option>
-    <option value="7.50">7 1/2"</option>
-    <option value="7.75">7 3/4"</option>
-    <option value="8.00">8"</option>
-    <option value="8.25">8 1/4"</option>
-    <option value="8.50">8 1/2"</option>
-    <option value="8.75">8 3/4"</option>
-    <option value="9.00">9"</option>
-  </select>
-</div>
+    <!-- Size - always visible -->
+    <div id="size-group" class="form-group">
+      <label for="size-select">Size (inches):</label>
+      <select id="size-select">
+        <option value="5.00">5"</option>
+        <option value="5.25">5 1/4"</option>
+        <option value="5.50">5 1/2"</option>
+        <option value="5.75">5 3/4"</option>
+        <option value="6.00">6"</option>
+        <option value="6.25">6 1/4"</option>
+        <option value="6.50">6 1/2"</option>
+        <option value="6.75">6 3/4"</option>
+        <option value="7.00">7"</option>
+        <option value="7.25">7 1/4"</option>
+        <option value="7.50">7 1/2"</option>
+        <option value="7.75">7 3/4"</option>
+        <option value="8.00">8"</option>
+        <option value="8.25">8 1/4"</option>
+        <option value="8.50">8 1/2"</option>
+        <option value="8.75">8 3/4"</option>
+        <option value="9.00">9"</option>
+      </select>
+    </div>
 
-<!-- Price display (starts hidden or with default) -->
+    <!-- Quantity - always visible -->
+    <div id="amount-group" class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" min="1" value="1" style="width: 80px;">
+    </div>
 
-<p id="price-display" class="price">Select a type and size to see price</p>
-  
-    <label for="month-select">Month:</label>
-    <select id="month-select">
-      <option value="jan">January</option>
-      <option value="feb">February</option>
-      <option value="mar">March</option>
-      <option value="apr">April</option>
-      <option value="may">May</option>
-      <option value="jun">June</option>
-      <option value="jul">July</option>
-      <option value="aug">August</option>
-      <option value="sep">September</option>
-      <option value="oct">October</option>
-      <option value="nov">November</option>
-      <option value="dec">December</option>
-    </select>
+    <!-- Price display -->
+    <p id="price-display" class="price">Select a type and size to see price</p>
   </div>
-</div>
 
-<!-- Main display image (starts with plain version) -->
-<img id="main-image" src="images/226.jpg" alt="Handmade 5-wire twisted gold filled bracelet" class="main-img">
+  <!-- Main display image -->
+  <img id="main-image" src="images/226.jpg" alt="Handmade Gold Filled Bracelet - Model 226" class="main-img">
 
-<!-- Thumbnail gallery for all variants -->
-<div class="thumbnail-gallery">
-  <img src="images/226.jpg" alt="Plain version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
-  <img src="images/226corrugated.jpg" alt="Corrugated version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
-  <img src="images/226jan.jpg" alt="January birthstone version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
-  <img src="images/226feb.jpg" alt="February birthstone version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
-  <img src="images/226mar.jpg" alt="March birthstone version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
-  <img src="images/226apr.jpg" alt="April birthstone version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
-  <img src="images/226may.jpg" alt="May birthstone version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
-  <img src="images/226jun.jpg" alt="June birthstone version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
-  <img src="images/226jul.jpg" alt="July birthstone version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
-  <img src="images/226aug.jpg" alt="August birthstone version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
-  <img src="images/226sep.jpg" alt="September birthstone version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
-  <img src="images/226oct.jpg" alt="October birthstone version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
-  <img src="images/226nov.jpg" alt="November birthstone version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
-  <img src="images/226dec.jpg" alt="December birthstone version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
-</div>
-  
-</div>
+  <!-- Thumbnail gallery -->
+  <div class="thumbnail-gallery">
+    <img src="images/226.jpg" alt="Plain version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
+    <img src="images/226corrugated.jpg" alt="Corrugated version" class="thumb" onclick="document.getElementById('main-image').src=this.src">
+    <img src="images/226jan.jpg" alt="January birthstone" class="thumb" onclick="document.getElementById('main-image').src=this.src">
+    <img src="images/226feb.jpg" alt="February birthstone" class="thumb" onclick="document.getElementById('main-image').src=this.src">
+    <img src="images/226mar.jpg" alt="March birthstone" class="thumb" onclick="document.getElementById('main-image').src=this.src">
+    <img src="images/226apr.jpg" alt="April birthstone" class="thumb" onclick="document.getElementById('main-image').src=this.src">
+    <img src="images/226may.jpg" alt="May birthstone" class="thumb" onclick="document.getElementById('main-image').src=this.src">
+    <img src="images/226jun.jpg" alt="June birthstone" class="thumb" onclick="document.getElementById('main-image').src=this.src">
+    <img src="images/226jul.jpg" alt="July birthstone" class="thumb" onclick="document.getElementById('main-image').src=this.src">
+    <img src="images/226aug.jpg" alt="August birthstone" class="thumb" onclick="document.getElementById('main-image').src=this.src">
+    <img src="images/226sep.jpg" alt="September birthstone" class="thumb" onclick="document.getElementById('main-image').src=this.src">
+    <img src="images/226oct.jpg" alt="October birthstone" class="thumb" onclick="document.getElementById('main-image').src=this.src">
+    <img src="images/226nov.jpg" alt="November birthstone" class="thumb" onclick="document.getElementById('main-image').src=this.src">
+    <img src="images/226dec.jpg" alt="December birthstone" class="thumb" onclick="document.getElementById('main-image').src=this.src">
+  </div>
 
-<script src="script.js"></script>
+  <p><small>Contact me at greghorne257@gmail.com.</small></p>
 
- <p><small>Contact me at greghorne257@gmail.com.</small></p>
+  <script>
+    // Inline script for simplicity (move to script.js later if preferred)
+
+    const typeSelect = document.getElementById('type-select');
+    const monthGroup = document.getElementById('month-group');
+    const sizeGroup = document.getElementById('size-group');
+    const mainImage = document.getElementById('main-image');
+    const priceDisplay = document.getElementById('price-display');
+
+    const prices = {
+      plain: {"5.00":130,"5.25":135,"5.50":135,"5.75":135,"6.00":135,"6.25":140,"6.50":140,"6.75":140,"7.00":140,"7.25":140,"7.50":140,"7.75":140,"8.00":145,"8.25":145,"8.50":145,"8.75":150,"9.00":150},
+      corrugated: {"5.00":135,"5.25":140,"5.50":140,"5.75":140,"6.00":140,"6.25":145,"6.50":145,"6.75":145,"7.00":145,"7.25":145,"7.50":145,"7.75":145,"8.00":150,"8.25":150,"8.50":150,"8.75":155,"9.00":155},
+      crystal: {"5.00":110,"5.25":115,"5.50":115,"5.75":115,"6.00":115,"6.25":120,"6.50":120,"6.75":120,"7.00":120,"7.25":120,"7.50":120,"7.75":120,"8.00":125,"8.25":125,"8.50":125,"8.75":130,"9.00":130}
+    };
+
+    function updateDisplay() {
+      const type = typeSelect.value;
+
+      // Month visibility
+      monthGroup.style.display = (type === 'crystal') ? 'block' : 'none';
+
+      // Size always visible
+      sizeGroup.style.display = 'block';
+
+      // Image
+      let src = 'images/226.jpg';
+      if (type === 'corrugated') src = 'images/226corrugated.jpg';
+      if (type === 'crystal') {
+        const month = document.getElementById('month-select').value || 'jan';
+        src = `images/226${month}.jpg`;
+      }
+      mainImage.src = src;
+
+      // Price
+      const size = document.getElementById('size-select').value;
+      if (type && size && prices[type][size]) {
+        priceDisplay.textContent = `$${prices[type][size]}.00`;
+      } else {
+        priceDisplay.textContent = 'Select a type and size to see price';
+      }
+    }
+
+    // Events
+    typeSelect.addEventListener('change', updateDisplay);
+    document.getElementById('month-select').addEventListener('change', updateDisplay);
+    document.getElementById('size-select').addEventListener('change', updateDisplay);
+
+    // Run on load for default "Plain"
+    window.addEventListener('DOMContentLoaded', updateDisplay);
+  </script>
 </body>
 </html>
-

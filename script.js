@@ -1,6 +1,6 @@
-// script.js - Fixed visibility + price logic
+// script.js - FINAL version: Size always visible, Month only for crystal, Price updates correctly
 
-console.log("Script loaded!");
+console.log("Script loaded successfully");
 
 // Elements
 const typeSelect = document.getElementById('type-select');
@@ -8,8 +8,6 @@ const monthGroup = document.getElementById('month-group');
 const sizeGroup = document.getElementById('size-group');
 const mainImage = document.getElementById('main-image');
 const priceDisplay = document.getElementById('price-display');
-
-// Note: You don't have quantity input yet - add it to HTML first (see below)
 
 // Price data (unchanged)
 const prices = {
@@ -36,27 +34,27 @@ const prices = {
   }
 };
 
-// Main update function
+// Update function: image, price, visibility
 function updateDisplay() {
   const type = typeSelect.value;
 
-  // Month visibility: only for crystal
+  // Month: show only for crystal
   monthGroup.style.display = (type === 'crystal') ? 'block' : 'none';
 
-  // Size group: ALWAYS visible for all types (as you want)
+  // Size: ALWAYS visible (remove any hiding)
   sizeGroup.style.display = 'block';
 
-  // Image update
+  // Image
   let newSrc = 'images/226.jpg';
   if (type === 'corrugated') {
     newSrc = 'images/226corrugated.jpg';
   } else if (type === 'crystal') {
-    let month = document.getElementById('month-select').value || 'jan';
+    const month = document.getElementById('month-select').value || 'jan';
     newSrc = `images/226${month}.jpg`;
   }
   mainImage.src = newSrc;
 
-  // Price update
+  // Price
   const size = document.getElementById('size-select').value;
   if (type && size && prices[type] && prices[type][size]) {
     priceDisplay.textContent = `$${prices[type][size]}.00`;
@@ -65,12 +63,10 @@ function updateDisplay() {
   }
 }
 
-// Event listeners
+// Events
 typeSelect.addEventListener('change', updateDisplay);
 document.getElementById('month-select').addEventListener('change', updateDisplay);
 document.getElementById('size-select').addEventListener('change', updateDisplay);
 
-// Critical: Run on page load so default "Plain" shows size immediately
-window.addEventListener('DOMContentLoaded', () => {
-  updateDisplay();
-});
+// Run on page load - critical for default "Plain" to show size & price immediately
+window.addEventListener('DOMContentLoaded', updateDisplay);

@@ -38,7 +38,7 @@ img {
 /* Gallery styles (single version) */
 .main-img {
     display: block;
-    max-width: 250px;
+    max-width: 300px;
     height: auto;
     border: 3px solid #ddd;
     border-radius: 10px;
@@ -75,7 +75,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 5px;               /* Space between all form groups */
-  max-width: 100px;
+  max-width: 150px;
   margin: 0 auto;
 }
 

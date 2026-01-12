@@ -72,7 +72,29 @@
     <p id="price-display" class="price">Select a type and size to see price</p>
 
     <!-- Buy Now button -->
-    <button id="buy-button" class="buy-button" disabled>Buy Now</button>
+  <!--  <button id="buy-button" class="buy-button" disabled>Buy Now</button> --!>
+  xx
+  <!-- PayPal Buy Now Button Form -->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <!-- Required PayPal fields -->
+  <input type="hidden" name="cmd" value="_xclick">
+  <input type="hidden" name="business" value="greghorne2579@proton.me"> <!-- Your PayPal email -->
+  <input type="hidden" name="currency_code" value="USD">
+  <input type="hidden" name="item_name" value="Handmade Gold Filled Bracelet - Model 226">
+  
+  <!-- Dynamic amount (updated by JS) -->
+  <input type="hidden" name="amount" id="paypal-amount" value="0.00">
+  
+  <!-- Custom fields that appear in your PayPal email/notification -->
+  <input type="hidden" name="on0" value="Type">        <input type="hidden" id="hidden-type" name="os0">
+  <input type="hidden" name="on1" value="Size">         <input type="hidden" id="hidden-size" name="os1">
+  <input type="hidden" name="on2" value="Birthstone">   <input type="hidden" id="hidden-month" name="os2">
+  <input type="hidden" name="on3" value="Quantity">     <input type="hidden" id="hidden-qty" name="os3">
+
+  <!-- Submit button -->
+  <button type="submit" id="buy-button" class="buy-button" disabled>Buy Now</button>
+</form>
+  xx
   </div>
 
   <!-- Main image -->

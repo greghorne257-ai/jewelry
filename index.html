@@ -71,30 +71,33 @@
     <!-- Price display -->
     <p id="price-display" class="price">Select a type and size to see price</p>
 
-    <!-- Buy Now button -->
-  <!--  <button id="buy-button" class="buy-button" disabled>Buy Now</button> --!>
-  xx
-  <!-- PayPal Buy Now Button Form -->
+    <!-- Buy button -->
+
+<!-- PayPal Buy Now Form -->
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-  <!-- Required PayPal fields -->
   <input type="hidden" name="cmd" value="_xclick">
-  <input type="hidden" name="business" value="greghorne2579@proton.me"> <!-- Your PayPal email -->
+  <input type="hidden" name="business" value="greghorne2579@proton.me">
   <input type="hidden" name="currency_code" value="USD">
-  <input type="hidden" name="item_name" value="Handmade Gold Filled Bracelet - Model 226">
-  
-  <!-- Dynamic amount (updated by JS) -->
+  <input type="hidden" name="item_name" value="Handmade Bracelet - Model 226">
+
+  <!-- Dynamic amount -->
   <input type="hidden" name="amount" id="paypal-amount" value="0.00">
-  
-  <!-- Custom fields that appear in your PayPal email/notification -->
+
+  <!-- Custom fields (appear in your PayPal email & dashboard) -->
   <input type="hidden" name="on0" value="Type">        <input type="hidden" id="hidden-type" name="os0">
   <input type="hidden" name="on1" value="Size">         <input type="hidden" id="hidden-size" name="os1">
   <input type="hidden" name="on2" value="Birthstone">   <input type="hidden" id="hidden-month" name="os2">
   <input type="hidden" name="on3" value="Quantity">     <input type="hidden" id="hidden-qty" name="os3">
 
-  <!-- Submit button -->
+  <!-- Require shipping address -->
+  <input type="hidden" name="no_shipping" value="2">  <!-- 2 = prompt & require address -->
+
+  <!-- Buy button -->
   <button type="submit" id="buy-button" class="buy-button" disabled>Buy Now</button>
 </form>
-  xx
+  
+</form>
+  
   </div>
 
   <!-- Main image -->
@@ -120,66 +123,69 @@
 <p> <small>Gold Filled Bracelet - Model 226</small></p>
   <p><small>Contact: greghorne257@gmail.com</small></p>
 
-  <script>
-    // Price data 5 130
-    const prices = {
-      plain: {"5.00":2,"5.25":135,"5.50":135,"5.75":135,"6.00":135,"6.25":140,"6.50":140,"6.75":140,"7.00":140,"7.25":140,"7.50":140,"7.75":140,"8.00":145,"8.25":145,"8.50":145,"8.75":150,"9.00":150},
-      corrugated: {"5.00":135,"5.25":140,"5.50":140,"5.75":140,"6.00":140,"6.25":145,"6.50":145,"6.75":145,"7.00":145,"7.25":145,"7.50":145,"7.75":145,"8.00":150,"8.25":150,"8.50":150,"8.75":155,"9.00":155},
-      crystal: {"5.00":110,"5.25":115,"5.50":115,"5.75":115,"6.00":115,"6.25":120,"6.50":120,"6.75":120,"7.00":120,"7.25":120,"7.50":120,"7.75":120,"8.00":125,"8.25":125,"8.50":125,"8.75":130,"9.00":130}
-    };
+<script>
+  // Price data (fixed your test price for 5.00 plain)
+  const prices = {
+    plain: {"5.00": 2, "5.25":135,"5.50":135,"5.75":135,"6.00":135,"6.25":140,"6.50":140,"6.75":140,"7.00":140,"7.25":140,"7.50":140,"7.75":140,"8.00":145,"8.25":145,"8.50":145,"8.75":150,"9.00":150},
+    corrugated: {"5.00":135,"5.25":140,"5.50":140,"5.75":140,"6.00":140,"6.25":145,"6.50":145,"6.75":145,"7.00":145,"7.25":145,"7.50":145,"7.75":145,"8.00":150,"8.25":150,"8.50":150,"8.75":155,"9.00":155},
+    crystal: {"5.00":110,"5.25":115,"5.50":115,"5.75":115,"6.00":115,"6.25":120,"6.50":120,"6.75":120,"7.00":120,"7.25":120,"7.50":120,"7.75":120,"8.00":125,"8.25":125,"8.50":125,"8.75":130,"9.00":130}
+  };
 
-    const typeSelect = document.getElementById('type-select');
-    const monthGroup = document.getElementById('month-group');
-    const sizeSelect = document.getElementById('size-select');
-    const quantityInput = document.getElementById('quantity');
-    const mainImage = document.getElementById('main-image');
-    const priceDisplay = document.getElementById('price-display');
-    const buyButton = document.getElementById('buy-button');
+  // DOM elements
+  const typeSelect = document.getElementById('type-select');
+  const monthGroup = document.getElementById('month-group');
+  const monthSelect = document.getElementById('month-select');
+  const sizeSelect = document.getElementById('size-select');
+  const quantityInput = document.getElementById('quantity');
+  const mainImage = document.getElementById('main-image');
+  const priceDisplay = document.getElementById('price-display');
+  const buyButton = document.getElementById('buy-button');
 
-    function updateDisplay() {
-      const type = typeSelect.value;
-      const size = sizeSelect.value;
-      const qty = parseInt(quantityInput.value) || 1;
+  function updateDisplay() {
+    const type = typeSelect.value;
+    const size = sizeSelect.value;
+    const qty = parseInt(quantityInput.value) || 1;
+    const month = (type === 'crystal') ? (monthSelect.value || 'None') : 'N/A';
 
-      // Month visibility
-      monthGroup.style.display = (type === 'crystal') ? 'block' : 'none';
+    // Month visibility
+    monthGroup.style.display = (type === 'crystal') ? 'block' : 'none';
 
-      // Image
-      let src = 'images/226.jpg';
-      if (type === 'corrugated') src = 'images/226corrugated.jpg';
-      if (type === 'crystal') {
-        const month = document.getElementById('month-select').value || 'jan';
-        src = `images/226${month}.jpg`;
-      }
-      mainImage.src = src;
+    // Image update
+    let src = 'images/226.jpg';
+    if (type === 'corrugated') src = 'images/226corrugated.jpg';
+    if (type === 'crystal') src = `images/226${month.toLowerCase()}.jpg`;
+    mainImage.src = src;
 
-      // Price calculation
-      let basePrice = 0;
-      if (prices[type] && prices[type][size]) {
-        basePrice = prices[type][size];
-      }
-
-      const totalPrice = basePrice * qty;
-      priceDisplay.textContent = totalPrice > 0 ? `$${totalPrice.toFixed(2)}` : 'Select options to see price';
-
-      // Enable/disable Buy button
-      buyButton.disabled = totalPrice <= 0;
-      if (!buyButton.disabled) {
-        buyButton.onclick = () => {
-          const paypalLink = `https://paypal.me/g3333333/${totalPrice.toFixed(2)}`;
-          window.open(paypalLink, '_blank');
-        };
-      }
+    // Price calculation
+    let basePrice = 0;
+    if (prices[type] && prices[type][size]) {
+      basePrice = prices[type][size];
     }
+    const totalPrice = basePrice * qty;
 
-    // Events
-    typeSelect.addEventListener('change', updateDisplay);
-    document.getElementById('month-select').addEventListener('change', updateDisplay);
-    sizeSelect.addEventListener('change', updateDisplay);
-    quantityInput.addEventListener('input', updateDisplay);
+    // Update display
+    priceDisplay.textContent = totalPrice > 0 ? `$${totalPrice.toFixed(2)}` : 'Select options to see price';
 
-    // Initial load
-    window.addEventListener('DOMContentLoaded', updateDisplay);
-  </script>
+    // Enable/disable Buy button
+    buyButton.disabled = totalPrice <= 0;
+
+    // Sync hidden fields for PayPal form (must be here!)
+    document.getElementById('paypal-amount').value = totalPrice.toFixed(2);
+    document.getElementById('hidden-type').value = type.charAt(0).toUpperCase() + type.slice(1);
+    document.getElementById('hidden-size').value = size;
+    document.getElementById('hidden-month').value = month;
+    document.getElementById('hidden-qty').value = qty;
+  }
+
+  // Event listeners
+  typeSelect.addEventListener('change', updateDisplay);
+  monthSelect.addEventListener('change', updateDisplay);
+  sizeSelect.addEventListener('change', updateDisplay);
+  quantityInput.addEventListener('input', updateDisplay);
+
+  // Run on page load
+  window.addEventListener('DOMContentLoaded', updateDisplay);
+</script>
+ 
 </body>
 </html>

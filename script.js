@@ -76,3 +76,35 @@ document.getElementById('size-select').addEventListener('change', updateDisplay)
 
 // Run on page load - critical for default "Plain" to show size & price immediately
 window.addEventListener('DOMContentLoaded', updateDisplay);
+
+
+function updateDisplay() {
+  const type = typeSelect.value;
+  const size = sizeSelect.value;
+  const qty = parseInt(quantityInput.value) || 1;
+  const month = (type === 'crystal') ? (document.getElementById('month-select').value || 'None') : 'N/A';
+
+  // ... your existing image and visibility code ...
+
+  // Calculate base price
+  let basePrice = 0;
+  if (prices[type] && prices[type][size]) {
+    basePrice = prices[type][size];
+  }
+
+  const totalPrice = basePrice * qty;
+
+  // Update display price
+  priceDisplay.textContent = totalPrice > 0 ? `$${totalPrice.toFixed(2)}` : 'Select options to see price';
+
+  // Enable/disable Buy button
+  const buyButton = document.getElementById('buy-button');
+  buyButton.disabled = totalPrice <= 0;
+
+  // Sync hidden fields for PayPal
+  document.getElementById('paypal-amount').value = totalPrice.toFixed(2);
+  document.getElementById('hidden-type').value = type;
+  document.getElementById('hidden-size').value = size;
+  document.getElementById('hidden-month').value = month;
+  document.getElementById('hidden-qty').value = qty;
+}
